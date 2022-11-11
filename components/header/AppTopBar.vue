@@ -73,7 +73,7 @@ export default {
     }
     .subnav-conatiner p svg{
         color: rgba(255,255,255,.5);
-        max-width: 10px;
+        max-width: 10px; 
     }
     .subnav-conatiner p:last-of-type {
         margin: 0 0 0 10px;
