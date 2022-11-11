@@ -31,15 +31,15 @@ export default {
       background-image: url("https://the7.io/modern-business/wp-content/uploads/sites/53/2018/12/t-img054.jpg");
       background-repeat: no-repeat;
       background-size: cover;
-      background-attachment: fixed;
+      background-attachment: unset !important;
       position: relative;
       z-index: 0;
     }
     .banner .content {
-      padding-bottom: 40px;
+      padding-bottom: 100px;
       padding-left: 25px;
       padding-right: 25px;
-      padding-top: 40px;
+      padding-top: 100px;
       z-index: 1;
       position: relative;
     }
@@ -64,12 +64,15 @@ export default {
       -webkit-transform: scale(-1);
       -ms-transform: scale(-1);
       transform: scale(-1);
-      position: relative;
+      position: absolute !important;
+      top: 0 !important;
       z-index: 1;
     }
     .bootom_seperator {
       position: relative;
       z-index: 1;
+      position: absolute !important;
+      bottom: 0 !important;
     }
     .banner .overlay {
         position: absolute;

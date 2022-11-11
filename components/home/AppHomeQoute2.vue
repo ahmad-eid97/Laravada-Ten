@@ -31,15 +31,15 @@ export default {
       background-image: url("https://the7.io/modern-business/wp-content/uploads/sites/53/2018/12/t-img047.jpg");
       background-repeat: no-repeat;
       background-size: cover;
-      background-attachment: fixed;
+      background-attachment: unset !important;
       position: relative;
       z-index: 0;
     }
     .banner2 .content {
-      padding-bottom: 40px;
+      padding-bottom: 100px;
       padding-left: 25px;
       padding-right: 25px;
-      padding-top: 40px;
+      padding-top: 100px;
       z-index: 1;
       position: relative;
     }
