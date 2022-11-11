@@ -56,7 +56,7 @@ export default {
     }
 }
 </script>
-<style scoped lang="scss">
+<style lang="scss">
 .top-bar p, .top-bar svg, .top-bar a {
     color: #fff !important;
 }
