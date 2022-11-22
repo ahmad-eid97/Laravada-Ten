@@ -6,79 +6,22 @@
                 <h2>Our Team Members</h2>
             </div>
             <div class="row pt-45 team">
-                <div class="col-sm-6 col-lg-4 projects-col text-center">
+                <div v-for="member in team.teams" :key="member.id" class="col-sm-6 col-md-4 projects-col">
+                    <div class="card">
+                        <div class="thumb">
+                            <img :src="member.image" alt="">
+                            <div class="rollover"></div>
+                        </div>
+                        <div class="content">
+                            <h4>{{member.name}}</h4>
+                            <h5>{{member.job}}</h5>
+                            <h6>{{member.description}}</h6>
+                            <h5>{{member.phone}}</h5>
+                            <h5>{{member.email}}</h5>
 
-                                <div class="">
-                                    <img src="https://the7.io/modern-business/wp-content/uploads/sites/53/2018/10/p12-400x400.jpg" alt="">
-                                </div>
-                                <div class="content">
-                                    <h4>Alex Black</h4>
-                                    <h5>Laed Programmer</h5>
-                                    <h6>Donec vestibulum lectus sem, vel convallis ligula commodo ac.</h6>
-
-                                </div>
-                            </div>
-                <div class="col-sm-6 col-lg-4 projects-col text-center">
-
-                                <div class="">
-                                    <img src="https://the7.io/modern-business/wp-content/uploads/sites/53/2018/10/p12-400x400.jpg" alt="">
-                                </div>
-                                <div class="content">
-                                    <h4>Alex Black</h4>
-                                    <h5>Laed Programmer</h5>
-                                    <h6>Donec vestibulum lectus sem, vel convallis ligula commodo ac.</h6>
-
-                                </div>
-                            </div>
-                <div class="col-sm-6 col-lg-4 projects-col text-center">
-
-                                <div class="">
-                                    <img src="https://the7.io/modern-business/wp-content/uploads/sites/53/2018/10/p12-400x400.jpg" alt="">
-                                </div>
-                                <div class="content">
-                                    <h4>Alex Black</h4>
-                                    <h5>Laed Programmer</h5>
-                                    <h6>Donec vestibulum lectus sem, vel convallis ligula commodo ac.</h6>
-
-                                </div>
-                            </div>
-                <div class="col-sm-6 col-lg-4 projects-col text-center">
-
-                                <div class="">
-                                    <img src="https://the7.io/modern-business/wp-content/uploads/sites/53/2018/10/p12-400x400.jpg" alt="">
-                                </div>
-                                <div class="content">
-                                    <h4>Alex Black</h4>
-                                    <h5>Laed Programmer</h5>
-                                    <h6>Donec vestibulum lectus sem, vel convallis ligula commodo ac.</h6>
-
-                                </div>
-                            </div>
-                <div class="col-sm-6 col-lg-4 projects-col text-center">
-
-                                <div class="">
-                                    <img src="https://the7.io/modern-business/wp-content/uploads/sites/53/2018/10/p12-400x400.jpg" alt="">
-                                </div>
-                                <div class="content">
-                                    <h4>Alex Black</h4>
-                                    <h5>Laed Programmer</h5>
-                                    <h6>Donec vestibulum lectus sem, vel convallis ligula commodo ac.</h6>
-
-                                </div>
-                            </div>
-                <div class="col-sm-6 col-lg-4 projects-col text-center">
-
-                                <div class="">
-                                    <img src="https://the7.io/modern-business/wp-content/uploads/sites/53/2018/10/p12-400x400.jpg" alt="">
-                                </div>
-                                <div class="content">
-                                    <h4>Alex Black</h4>
-                                    <h5>Laed Programmer</h5>
-                                    <h6>Donec vestibulum lectus sem, vel convallis ligula commodo ac.</h6>
-
-                                </div>
-                            </div>
-                
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -86,7 +29,8 @@
 
 <script>
 export default {
-    name: 'AppTeamMembers'
+    name: 'AppTeamMembers',
+    props: ["team"]
 }
 </script>
 
