@@ -4,7 +4,7 @@
     <app-top-bar></app-top-bar>
     <header class="header header-style-2 clearfix">
         <b-navbar toggleable="lg" :class="{ 'onScroll': !topOfPage}" class="navbar navbar-expand-lg navbar-light py-0 ">
-                    <b-navbar-brand href="#"><img src="/assets/images/logo.png" alt="logo" style="maxWidth: 200px"></b-navbar-brand>
+                    <b-navbar-brand href="/"><img src="/assets/images/logo.png" alt="logo" style="maxWidth: 200px"></b-navbar-brand>
                     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
                     <b-collapse id="nav-collapse" is-nav>
                         <ul class="navbar-nav me-auto">
