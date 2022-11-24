@@ -6,7 +6,7 @@
             </h3>
             <div class="col-12 text-center">
                 <div class="breadcrumb">
-                    <router-link to="home">
+                    <router-link to="/">
                         Home
                     </router-link>
                     <a href="">

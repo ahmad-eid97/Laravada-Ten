@@ -12,12 +12,12 @@
                 <div v-for="service in services.services" :key="service.id" class="col-lg-3 col-sm-6 col-md-4" @click="$router.push(`/service/${service.id}`)">
                     <div class="services-card services-style-bg">
                         <div class="icon">
-                            <font-awesome-icon icon="fa-solid fa-person-dots-from-line" />
+                            <font-awesome-icon :icon="service.icon" />
                         </div>
                         <h3>
                             <router-link to="service">{{service.title}}</router-link>
                         </h3>
-                        <p>{{service.description}}</p>
+                        <p>{{service.short_description}}</p>
                         <router-link to="service" class="learn-btn">Learn More 
                             <i class="bx bx-chevron-right"></i>
                         </router-link>
@@ -107,7 +107,7 @@ export default {
     width: 90px;
     height: 90px;
     background-color:var(--main-color);
-    border-radius: 272px 0 0 0;
+    border-radius: 12px;
     opacity: .1;
     -webkit-transition: .7s;
     transition: .7s;
@@ -123,7 +123,7 @@ export default {
     width: 75px;
     height: 75px;
     background-color:var(--main-color);
-    border-radius: 272px 0 0 0;
+    border-radius: 12px;
     opacity: .1;
     -webkit-transition: .7s;
     transition: .7s;
@@ -139,8 +139,8 @@ export default {
     width: 80px;
     height: 80px;
     line-height: 80px;
-    color: var(--main-color);
-    background-color:transparent;
+    color: #fff;
+    background-color:var(--main-color);
     border-radius: 12px;
     display: inline-block;
     text-align: center;
@@ -153,8 +153,8 @@ export default {
     width: 80px;
     height: 80px;
     line-height: 80px;
-    color: #fff;
-    background-color: transparent;
+    color: var(--main-color);
+    background-color: #fff;
     border-radius: 12px;
     display: inline-block;
     text-align: center;
