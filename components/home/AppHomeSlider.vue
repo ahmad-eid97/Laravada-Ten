@@ -39,6 +39,7 @@ import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
 export default {
     name: 'AppHomeSlider',
     components: {VueSlickCarousel},
+    props: ["sliderData"],
     data() {
         return {
             c1: undefined,

@@ -2,84 +2,29 @@
   <section class="counter-area">
     <div class="container">
       <div class="section-title text-center">
-        <span class="sp-color2">Numbers Are Talking</span>
-        <h2>Let’s Check Our Business Growth and Success Story</h2>
+        <span class="sp-color2">{{counterSection.find(one => one.key === 'counter_success_title').value}}</span>
+        <h2>{{counterSection.find(one => one.key === 'counter_success_sub_title').value}}</h2>
 
         <p>
-          Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat
-          ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh
-          vulputate cursus a sit amet mauris Morbi accumsan ipsum velit.
+          {{counterSection.find(one => one.key === 'counter_success_description').value}}
         </p>
       </div>
-      <div class="row pt-45">
-        <div class="col-lg-3 col-6 col-md-3">
-          <div class="counter-another-content">
-            <font-awesome-icon icon="fa-solid fa-laptop-code" />
-            <div>
-              <h3>
-                <VueJsCounter
-                  class="d-inline"
-                  :startVal="0"
-                  :endVal="4205"
-                  separator=","
-                ></VueJsCounter
-                >+
-              </h3>
-              <span>Delivered Goods</span>
-            </div>
-          </div>
-        </div>
+      <div class="row pt-45 justify-content-center">
 
-        <div class="col-lg-3 col-6 col-md-3">
+        <div v-for="item in counterSection.find(one => one.key === 'counter_success_list').value" :key="item" class="col-sm-6 col-lg-3 col-md-3">
           <div class="counter-another-content">
-            <font-awesome-icon icon="fa-solid fa-person-dots-from-line" />
+            <font-awesome-icon :icon="item.icon" />
             <div>
               <h3>
                 <VueJsCounter
                   class="d-inline"
                   :startVal="0"
-                  :endVal="245"
+                  :endVal="item.counter"
                   separator=","
                 ></VueJsCounter
                 >+
               </h3>
-              <span>IT Consulting</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-3 col-6 col-md-3">
-          <div class="counter-another-content">
-            <font-awesome-icon icon="fa-solid fa-shuttle-space" />
-            <div>
-              <h3>
-                <VueJsCounter
-                  class="d-inline"
-                  :startVal="0"
-                  :endVal="3550"
-                  separator=","
-                ></VueJsCounter
-                >+
-              </h3>
-              <span>Fully Launched</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-3 col-6 col-md-3">
-          <div class="counter-another-content">
-            <font-awesome-icon icon="fa-solid fa-folder-open" />
-            <div>
-              <h3>
-                <VueJsCounter
-                  class="d-inline"
-                  :startVal="0"
-                  :endVal="6545"
-                  separator=","
-                ></VueJsCounter
-                >+
-              </h3>
-              <span>Project Completed</span>
+              <span>{{item.title}}</span>
             </div>
           </div>
         </div>
@@ -92,16 +37,17 @@
 import VueJsCounter from "vue-count-to";
 export default {
   name: "AppHomeCountdown",
+  props: ["counterSection"],
   components: {
     VueJsCounter,
   },
   data() {
     return {};
   },
-  methods: {},
+  methods: {}
 };
 </script>
-<style>
+<style lang="scss">
 .counter-area .section-title {
   margin: 0;
 }
@@ -153,6 +99,7 @@ export default {
   line-height: 1;
   margin-bottom: 8px;
 }
+
 .counter-another-content h3 span {
   color: #212529;
   font-size: 35px;
@@ -172,5 +119,52 @@ export default {
   top: 3px;
   left: 0;
   color: var(--main-color);
+}
+
+@include md {
+  .counter-another-content {
+    padding: 0 !important;
+  }
+  .counter-another-content h3 span {
+    font-size: 25px;
+  }
+  .counter-another-content svg {
+    font-size: 50px;
+    position: relative;
+  }
+}
+
+@include sm {
+  .counter-another-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 0 !important;
+  }
+  .counter-another-content h3 span {
+    font-size: 27px;
+  }
+  .counter-another-content svg {
+    font-size: 50px;
+    position: relative;
+  }
+}
+
+@include xs {
+  .counter-another-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 0 !important;
+  }
+  .counter-another-content h3 span {
+    font-size: 20px;
+  }
+  .counter-another-content svg {
+    font-size: 40px;
+    position: relative;
+  }
 }
 </style>

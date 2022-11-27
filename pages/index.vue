@@ -1,7 +1,7 @@
 <template>
   <div class="home">
         <!-- Slick Section Start -->
-        <app-home-slider></app-home-slider>
+        <app-home-slider :sliderData="sliderData"></app-home-slider>
         <!-- Slick Section End -->
         
         <app-home-feature></app-home-feature>
@@ -74,6 +74,13 @@ export default {
     AppHomeQoute2,
     // AppHomeNews,
     // AppHomeServicesOffers
+  },
+  async asyncData({ $axios }) {
+    const sliderData = await $axios.get('/sliders');
+
+    return {
+      sliderData: sliderData.data.data.sliders
+    }
   }
 }
 </script>
