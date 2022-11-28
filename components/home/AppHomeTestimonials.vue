@@ -5,12 +5,12 @@
             <div class="row testimonials-post">
                 <div class="col-md-12">
                     <swiper :options="swiperOption" class="owl-carousel">
-                        <swiper-slide>
+                        <swiper-slide v-for="item in testimonials" :key="item.id">
                             <div class="item">
                                 <div class="row align-items-center">
                                     <div class="col-lg-6">
                                         <div class="clients-slider-img">
-                                            <img src="/assets/images/client-1.png" alt="Images">
+                                            <img :src="item.image" :alt="item.title">
                                             <div class="clients-slider-circle"></div>
                                         </div>
                                     </div>
@@ -20,35 +20,10 @@
                                                 <font-awesome-icon icon="fa-solid fa-quote-left" />
                                             </div>
                                             <p>
-                                                “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at ligula eget lectus consequat volutpat. Donec elit libero, finibus eget scelerisque sed, tempor sit amet erat. Pellentesque tincidunt a purus sit amet ullamcorper. Vestibulum ultrices ligula in pharetra sagittis. Quisque lacinia magna dolor, at tempus sem consequat at.”
+                                                {{item.description}}
                                             </p>
-                                            <h3>Jonthon Martin</h3>
-                                            <span>App Developer</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </swiper-slide>
-
-                        <swiper-slide>
-                            <div class="item">
-                                <div class="row align-items-center">
-                                    <div class="col-lg-6">
-                                        <div class="clients-slider-img">
-                                            <img src="/assets/images/client-1.png" alt="Images">
-                                            <div class="clients-slider-circle"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="clients-slider-content">
-                                            <div class="svg">
-                                                <font-awesome-icon icon="fa-solid fa-quote-left" />
-                                            </div>
-                                            <p>
-                                                “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at ligula eget lectus consequat volutpat. Donec elit libero, finibus eget scelerisque sed, tempor sit amet erat. Pellentesque tincidunt a purus sit amet ullamcorper. Vestibulum ultrices ligula in pharetra sagittis. Quisque lacinia magna dolor, at tempus sem consequat at.”
-                                            </p>
-                                            <h3>Jonthon Martin</h3>
-                                            <span>App Developer</span>
+                                            <h3>{{item.title}}</h3>
+                                            <span>{{item.job}}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -66,6 +41,7 @@
 <script>
 export default {
     name: 'AppHomeTestimonials',
+    props: ["testimonials"],
     data() {
         return {
         swiperOption: {

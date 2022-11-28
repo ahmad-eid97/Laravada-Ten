@@ -6,66 +6,24 @@
                 <h2>Let’s Check Some Latest Blog</h2>
             </div>
 
-            <div class="row pt-45">
-                <div class="col-lg-4 col-md-6">
+            <div class="row pt-45 justify-content-center">
+                <div v-for="blog in blogs.slice(0, 3)" :key="blog.id" class="col-lg-4 col-md-6">
                     <div class="blog-item">
                         <div class="blog-img2">
                             <a href="#">
-                                <img src="https://the7.io/modern-business/wp-content/uploads/sites/53/2018/11/img020.jpg" alt="Blog Images">
+                                <img :src="blog.image" alt="Blog Images">
                             </a>
                             <div class="blog-tag">
-                                <h3>11</h3>
-                                <span>June</span>
+                                <h3>{{ $date(new Date(blog.publish_date), 'dd') }}</h3>
+                                <span>{{ $date(new Date(blog.publish_date), 'MMM') }}</span>
                             </div>
                         </div>
                         <div class="content">
                             <h3>
-                                <a href="#">Product Idea Solution for New Generation</a>
+                                <a href="#">{{blog.title}}</a>
                             </h3>
-                            <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum.</p>
-                            <a href="#" class="read-btn">Read More <font-awesome-icon icon="fa-solid fa-angle-right" /></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6">
-                    <div class="blog-item">
-                        <div class="blog-img2">
-                            <a href="#">
-                                <img src="https://the7.io/modern-business/wp-content/uploads/sites/53/2018/10/gut006-1-364x242.jpg" alt="Blog Images">
-                            </a>
-                            <div class="blog-tag">
-                                <h3>12</h3>
-                                <span>June</span>
-                            </div>
-                        </div>
-                        <div class="content">
-                            <h3>
-                                <a href="#">New Device Invention for Digital Platform</a>
-                            </h3>
-                            <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum.</p>
-                            <a href="#" class="read-btn">Read More <font-awesome-icon icon="fa-solid fa-angle-right" /></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 offset-lg-0 offset-md-3">
-                    <div class="blog-item">
-                        <div class="blog-img2">
-                            <a href="#">
-                                <img src="https://the7.io/modern-business/wp-content/uploads/sites/53/2018/11/gut001-364x242.jpg" alt="Blog Images">
-                            </a>
-                            <div class="blog-tag">
-                                <h3>15</h3>
-                                <span>June</span>
-                            </div>
-                        </div>
-                        <div class="content">
-                            <h3>
-                                <a href="#">Business Strategy Make His Goal Acheive </a>
-                            </h3>
-                            <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum.</p>
-                            <a href="#" class="read-btn">Read More <font-awesome-icon icon="fa-solid fa-angle-right" /></a>
+                            <p>{{blog.short_description}}</p>
+                            <nuxt-link :to="`/blog/${blog.id}`" class="read-btn">Read More <font-awesome-icon icon="fa-solid fa-angle-right" /></nuxt-link>
                         </div>
                     </div>
                 </div>
@@ -78,6 +36,7 @@
 
 export default {
     name: 'AppHomeContactDivider',
+    props: ['blogs'],
     components: {},
     data() {
         return {
@@ -109,6 +68,7 @@ export default {
         background-color: #e6f1fc;
         max-width: 100%;
         width: 100%;
+        height: 300px;
     }
     .blog-item .blog-img2 .blog-tag {
         background-color: var(--main-color);

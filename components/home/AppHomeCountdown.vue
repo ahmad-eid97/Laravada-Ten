@@ -11,74 +11,20 @@
         </p>
       </div>
       <div class="row pt-45">
-        <div class="col-lg-3 col-md-3 col-sm-6">
+        <div v-for="item in counter.find(one => one.key === 'counter_success_list').value" :key="item" class="col-lg-3 col-md-3 col-sm-6">
           <div class="counter-another-content">
-            <font-awesome-icon icon="fa-solid fa-laptop-code" />
+            <font-awesome-icon :icon="item.icon" />
             <div>
               <h3>
                 <VueJsCounter
                   class="d-inline"
                   :startVal="0"
-                  :endVal="4205"
+                  :endVal="item.counter"
                   separator=","
                 ></VueJsCounter
                 >+
               </h3>
-              <span>Delivered Goods</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-3 col-md-3 col-sm-6">
-          <div class="counter-another-content">
-            <font-awesome-icon icon="fa-solid fa-person-dots-from-line" />
-            <div>
-              <h3>
-                <VueJsCounter
-                  class="d-inline"
-                  :startVal="0"
-                  :endVal="245"
-                  separator=","
-                ></VueJsCounter
-                >+
-              </h3>
-              <span>IT Consulting</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-3 col-md-3 col-sm-6">
-          <div class="counter-another-content">
-            <font-awesome-icon icon="fa-solid fa-shuttle-space" />
-            <div>
-              <h3>
-                <VueJsCounter
-                  class="d-inline"
-                  :startVal="0"
-                  :endVal="3550"
-                  separator=","
-                ></VueJsCounter
-                >+
-              </h3>
-              <span>Fully Launched</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-3 col-md-3 col-sm-6">
-          <div class="counter-another-content">
-            <font-awesome-icon icon="fa-solid fa-folder-open" />
-            <div>
-              <h3>
-                <VueJsCounter
-                  class="d-inline"
-                  :startVal="0"
-                  :endVal="6545"
-                  separator=","
-                ></VueJsCounter
-                >+
-              </h3>
-              <span>Project Completed</span>
+              <span>{{item.title}}</span>
             </div>
           </div>
         </div>
@@ -91,6 +37,7 @@
 import VueJsCounter from "vue-count-to";
 export default {
   name: "AppHomeCountdown",
+  props: ['counter'],
   components: {
     VueJsCounter,
   },

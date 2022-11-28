@@ -5,44 +5,14 @@
                 <div class="col-12 text-center">
                     <h2>SERVICES WE PROVIDE</h2>
                 </div>
-                <div class="col-lg-6 col-auto">
+                <div v-for="service in services.slice(0, 4)" :key="service.id" class="col-lg-6 col-auto">
                     <div class="services-card  services-card-color-bg">
-                        <font-awesome-icon icon="fa-solid fa-person-dots-from-line" />
+                        <font-awesome-icon :icon="service.icon" />
                         <h3>
-                            <a href="service-details.html">IT Consulting</a>
+                            <a href="service-details.html">{{service.title}}</a>
                         </h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at ligula eget lectus consequat volutpat.</p>
-                        <a href="service-details.html" class="learn-btn">Learn More <i class="bx bx-chevron-right"></i></a>
-                        </div>
-                </div>
-                <div class="col-lg-6 col-auto">
-                    <div class="services-card  services-card-color-bg">
-                        <font-awesome-icon icon="fa-solid fa-cloud" />
-                        <h3>
-                            <a href="service-details.html">Cloud Computing</a>
-                        </h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at ligula eget lectus consequat volutpat.</p>
-                        <a href="service-details.html" class="learn-btn">Learn More <i class="bx bx-chevron-right"></i></a>
-                        </div>
-                </div>
-                <div class="col-lg-6 col-auto">
-                    <div class="services-card  services-card-color-bg">
-                        <font-awesome-icon icon="fa-solid fa-laptop-code" />
-                        <h3>
-                            <a href="service-details.html">Web Development</a>
-                        </h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at ligula eget lectus consequat volutpat.</p>
-                        <a href="service-details.html" class="learn-btn">Learn More <i class="bx bx-chevron-right"></i></a>
-                        </div>
-                </div>
-                <div class="col-lg-6 col-auto">
-                    <div class="services-card  services-card-color-bg">
-                        <font-awesome-icon icon="fa-solid fa-chart-area" />
-                        <h3>
-                            <a href="service-details.html">Business Reform</a>
-                        </h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at ligula eget lectus consequat volutpat.</p>
-                        <a href="service-details.html" class="learn-btn">Learn More <i class="bx bx-chevron-right"></i></a>
+                        <p>{{service.short_description}}</p>
+                        <nuxt-link :to="`/service/${service.id}`" class="learn-btn">Learn More <i class="bx bx-chevron-right"></i></nuxt-link>
                         </div>
                 </div>
             </div>
@@ -56,6 +26,7 @@
 
 export default {
     name: 'AppHomeFeature',
+    props: ["services"],
     components: {},
     data() {
         return {
@@ -80,6 +51,7 @@ export default {
         position: relative;
         z-index: 1;
         margin-bottom: 30px;
+        height: 100%;
     }
     .services-card::before {
         content: '';

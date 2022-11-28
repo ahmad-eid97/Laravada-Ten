@@ -40,7 +40,7 @@ export default {
     margin: 0 auto;
     padding: 0;
     position: relative;
-    /* text-align: center; */
+    text-align: center;
 }
 .security-area .section-title span {
     margin-bottom: 8px;

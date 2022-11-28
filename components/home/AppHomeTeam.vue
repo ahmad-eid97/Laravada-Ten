@@ -12,84 +12,17 @@
                 <div class="col-12 slider-container">
 
                     <swiper :options="swiperOption" class="team">
-                        <swiper-slide>
+                        <swiper-slide v-for="member in team" :key="member.id">
                         <div class="item">
                             <div class=" projects-col">
 
                                 <div class="">
-                                    <img src="https://the7.io/modern-business/wp-content/uploads/sites/53/2018/10/p12-400x400.jpg" alt="">
+                                    <img :src="member.image" :alt="member.title">
                                 </div>
                                 <div class="content">
-                                    <h4>Alex Black</h4>
-                                    <h5>Laed Programmer</h5>
-                                    <h6>Donec vestibulum lectus sem, vel convallis ligula commodo ac.</h6>
-
-                                </div>
-                            </div>
-                        </div>
-                        </swiper-slide>
-
-                        <swiper-slide>
-                        <div class="item">
-                            <div class=" projects-col">
-
-                                <div class="">
-                                    <img src="https://the7.io/modern-business/wp-content/uploads/sites/53/2018/11/p19.jpg" alt="">
-                                </div>
-                                <div class="content">
-                                    <h4>John Brown</h4>
-                                    <h5>Photographer</h5>
-                                    <h6>Donec vestibulum lectus sem, vel convallis ligula commodo ac.</h6>
-
-                                </div>
-                            </div>
-                        </div>
-                        </swiper-slide>
-
-                        <swiper-slide>
-                        <div class="item">
-                            <div class=" projects-col">
-
-                                <div class="">
-                                    <img src="https://the7.io/modern-business/wp-content/uploads/sites/53/2018/11/p22.jpg" alt="">
-                                </div>
-                                <div class="content">
-                                    <h4>Diana Richards</h4>
-                                    <h5>Lead Designer</h5>
-                                    <h6>Donec vestibulum lectus sem, vel convallis ligula commodo ac.</h6>
-
-                                </div>
-                            </div>
-                        </div>
-                        </swiper-slide>
-
-                        <swiper-slide>
-                        <div class="item">
-                            <div class=" projects-col">
-
-                                <div class="">
-                                    <img src="https://the7.io/modern-business/wp-content/uploads/sites/53/2018/11/p16.jpg" alt="">
-                                </div>
-                                <div class="content">
-                                    <h4>Alexandra Green</h4>
-                                    <h5>SMM Expert</h5>
-                                    <h6>Donec vestibulum lectus sem, vel convallis ligula commodo ac.</h6>
-                                </div>
-                            </div>
-                        </div>
-                        </swiper-slide>
-
-                        <swiper-slide>
-                        <div class="item">
-                            <div class=" projects-col">
-
-                                <div class="">
-                                    <img src="/assets/images/team.jpg" alt="">
-                                </div>
-                                <div class="content">
-                                    <h4>RICHARD SWIFT</h4>
-                                    <h5>junior consultant</h5>
-                                    <h6>Donec vestibulum lectus sem, vel convallis ligula commodo ac.</h6>
+                                    <h4>{{member.name}}</h4>
+                                    <h5>{{member.job}}</h5>
+                                    <h6>{{member.description}}</h6>
 
                                 </div>
                             </div>
@@ -109,6 +42,7 @@
 
 export default {
     name: 'AppHomeTeam',
+    props: ["team"],
     data() {
         return {
         swiperOption: {
