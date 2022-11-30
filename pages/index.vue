@@ -9,7 +9,7 @@
         <app-home-qoute></app-home-qoute>
 
         <!-- WHY WORK WITH US Start -->
-        <app-home-why></app-home-why>
+        <app-home-why :features="features"></app-home-why>
         <!-- WHY WORK WITH US End -->
         <!-- testimonials Section Start -->
         <app-home-testimonials :testimonials="testimonials"></app-home-testimonials>
@@ -62,6 +62,8 @@ export default {
   async asyncData({ $axios, app }) {
     const sliderData = await $axios.get('/sliders');
 
+    const features = await $axios.get('/sections/features');
+
     const blogs = await $axios.get('/blogs?latest=1');
 
     const services = await $axios.get('/services');
@@ -78,6 +80,7 @@ export default {
 
     return {
       sliderData: sliderData.data.data.sliders,
+      features: features.data.data,
       blogs: blogs.data.data.blogs,
       services: services.data.data.services,
       testimonials: testimonials.data.data.testimonials,

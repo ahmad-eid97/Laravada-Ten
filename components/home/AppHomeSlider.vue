@@ -25,7 +25,7 @@
                     
                     <div class="text">
                         <h1>LARAVADA</h1>
-                        <h2>The7 Modern Business</h2>
+                        <h2>The Modern Business</h2>
                         <p>Fusce dapibus congue diam – from dolor amet nulla dapibus interdum condimentum.</p>
                     </div>
         </section>
