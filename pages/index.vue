@@ -16,7 +16,7 @@
         <!-- testimonials Section End --> 
         <app-home-countdown :counter="counter"></app-home-countdown>
 
-        <app-home-technology></app-home-technology>
+        <app-home-technology :solutions="solutions"></app-home-technology>
         <app-home-qoute-2></app-home-qoute-2>
 
         <app-home-team :team="team"></app-home-team>
@@ -64,6 +64,8 @@ export default {
 
     const features = await $axios.get('/sections/features');
 
+    const solutions = await $axios.get("/sections/solutions");
+
     const blogs = await $axios.get('/blogs?latest=1');
 
     const services = await $axios.get('/services');
@@ -81,6 +83,7 @@ export default {
     return {
       sliderData: sliderData.data.data.sliders,
       features: features.data.data,
+      solutions: solutions.data.data,
       blogs: blogs.data.data.blogs,
       services: services.data.data.services,
       testimonials: testimonials.data.data.testimonials,
