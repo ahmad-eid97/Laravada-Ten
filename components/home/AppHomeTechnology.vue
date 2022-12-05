@@ -27,7 +27,7 @@
                 class="col-lg-3 col-6 col-sm-3"
               >
                 <div class="technology-item">
-                  <font-awesome-icon :icon="item.icon" />
+                  <i :class="item.icon"></i>
                   <h3>{{ item.title }}</h3>
                 </div>
               </div>
@@ -111,7 +111,7 @@ export default {
   font-weight: 500;
   font-size: 18px;
 }
-.technology-item svg {
+.technology-item i {
   font-size: 35px;
   line-height: 1;
   color: var(--main-color);
