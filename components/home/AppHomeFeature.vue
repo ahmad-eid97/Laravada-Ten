@@ -1,7 +1,7 @@
 <template>
   <section class="features">
     <div class="container">
-      <div class="row gy-4 justify-content-center">
+      <div class="row gy-4 justify-content-center" v-if="services.length >= 1">
         <div class="col-12 text-center">
           <h2>SERVICES WE PROVIDE</h2>
         </div>

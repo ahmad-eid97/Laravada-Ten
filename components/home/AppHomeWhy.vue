@@ -8,7 +8,12 @@
       </div>
       <div class="row gy-4 justify-content-center align-items-center">
         <div class="col-md-6">
-          <div class="aboutus right">
+          <div
+            class="aboutus right"
+            v-if="
+              features.find((one) => one.key === 'features_text_list').value
+            "
+          >
             <h3>5 MAIN REASONS TO CHOOSE US</h3>
             <div
               v-for="(feature, index) in features.find(
@@ -71,7 +76,12 @@
                 </h4>
               </div>
             </div>
-            <div class="about-us-main">
+            <div
+              class="about-us-main"
+              v-if="
+                features.find((one) => one.key === 'features_text_list').value
+              "
+            >
               <h4
                 v-for="(feature, index) in features
                   .find((one) => one.key === 'features_text_list')

@@ -1,79 +1,86 @@
 <template>
-    <div class="team pt-100 pb-70">
-        <div class="container">
-            <div class="section-title text-center">
-                <span class="sp-color2">Our Team</span>
-                <h2>Our Team Members</h2>
+  <div class="team pt-100 pb-70">
+    <div class="container">
+      <div class="section-title text-center">
+        <span class="sp-color2">Our Team</span>
+        <h2>Our Team Members</h2>
+      </div>
+      <div class="row pt-45" v-if="team.teams.length >= 1">
+        <div
+          v-for="member in team.teams"
+          :key="member.id"
+          class="col-sm-6 col-md-4 projects-col"
+        >
+          <div class="card">
+            <div class="thumb">
+              <img :src="member.image" alt="member" />
+              <div class="rollover"></div>
             </div>
-            <div class="row pt-45">
-                <div v-for="member in team.teams" :key="member.id" class="col-sm-6 col-md-4 projects-col">
-                    <div class="card">
-                        <div class="thumb">
-                            <img :src="member.image" alt="">
-                            <div class="rollover"></div>
-                        </div>
-                        <div class="content">
-                            <h4>{{member.name}}</h4>
-                            <h5>{{member.job}}</h5>
-                            <h6>{{member.description}}</h6>
-                            <h5>{{member.phone}}</h5>
-                            <h5>{{member.email}}</h5>
-
-                        </div>
-                    </div>
-                </div>
+            <div class="content">
+              <h4>{{ member.name }}</h4>
+              <h5>{{ member.job }}</h5>
+              <h6>{{ member.description }}</h6>
+              <h5>{{ member.phone }}</h5>
+              <h5>{{ member.email }}</h5>
             </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>
 export default {
-    name: 'AppTestimonialsTeam',
-    props: ["team"]
-}
+  name: "AppTestimonialsTeam",
+  props: ["team"],
+};
 </script>
 
 <style>
 .team-area .section-title {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
-.team-area  .section-title span {
+.team-area .section-title span {
   margin-bottom: 8px;
   font-weight: 600;
   display: block;
   color: var(--main-color);
 }
 .team-area .section-title h2 {
-    max-width: 600px;
-    color: #252525;
-    font-size: 35px;
-    font-weight: 800;
-    letter-spacing: -1px;
-    line-height: 42px;
-    text-align: left;
-    margin-top: 10px;
-    margin-right: auto;
-    margin-bottom: 15px;
-    margin-left: auto;
-    text-align: center;
+  max-width: 600px;
+  color: #252525;
+  font-size: 35px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 42px;
+  text-align: left;
+  margin-top: 10px;
+  margin-right: auto;
+  margin-bottom: 15px;
+  margin-left: auto;
+  text-align: center;
 }
 .team-area .section-title .seprator img {
-    width: 70px;
-    margin-top: 5px;
-    margin-bottom: 20px;
+  width: 70px;
+  margin-top: 5px;
+  margin-bottom: 20px;
 }
 .projects-col img {
-    width: 100%;
+  width: 100%;
 }
 .projects-col {
-    text-align: center;
+  text-align: center;
 }
-    .team img {
+.team img {
   border-radius: 50%;
   width: 150px;
   margin-bottom: 30px;
   animation: border-transform 15s infinite ease-in-out;
+}
+.thumb img {
+  height: 200px;
+  width: 80%;
 }
 .team .content h4 {
   color: var(--main-color);
@@ -91,7 +98,7 @@ export default {
 }
 .team .content h6 {
   color: #989898;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 14px;
   text-transform: uppercase;
   margin-bottom: 15px;
@@ -114,60 +121,63 @@ export default {
 }
 
 .team .owl-theme .owl-nav .owl-next,
-    .team .owl-theme .owl-nav .owl-next:hover, 
-    .team .owl-theme .owl-nav .owl-prev, 
-    .team .owl-theme .owl-nav .owl-prev:hover {
-        background-color: transparent;
-        display: inline-block;
-        border-radius: 30px;
-        bottom: 0;
-        text-align: center;
-        line-height: 26px;
-        font-size: 20px;
-        position: absolute;
-        padding: 4px 11px;
-        border: 1px solid var(--main-color);
-        color: var(--main-color);
-    }
-    .team .owl-theme .owl-nav .owl-next:hover, 
-    .team .owl-theme .owl-nav .owl-prev:hover {
-        background: var(--main-color);
-        color: #fff;
-        transition: all 0.2s linear;
-    }
-    .team .owl-theme .owl-nav .owl-next {
-        right: 45% !important;
-    }
-    .team .owl-theme .owl-nav .owl-prev {
-        right: 50% !important;
-    }
-.team-area .section-title {
-    margin-bottom: 0;
+.team .owl-theme .owl-nav .owl-next:hover,
+.team .owl-theme .owl-nav .owl-prev,
+.team .owl-theme .owl-nav .owl-prev:hover {
+  background-color: transparent;
+  display: inline-block;
+  border-radius: 30px;
+  bottom: 0;
+  text-align: center;
+  line-height: 26px;
+  font-size: 20px;
+  position: absolute;
+  padding: 4px 11px;
+  border: 1px solid var(--main-color);
+  color: var(--main-color);
 }
-.team-area  .section-title span {
+.team .owl-theme .owl-nav .owl-next:hover,
+.team .owl-theme .owl-nav .owl-prev:hover {
+  background: var(--main-color);
+  color: #fff;
+  transition: all 0.2s linear;
+}
+.team .owl-theme .owl-nav .owl-next {
+  right: 45% !important;
+}
+.team .owl-theme .owl-nav .owl-prev {
+  right: 50% !important;
+}
+.team-area .section-title {
+  margin-bottom: 0;
+}
+.team-area .section-title span {
   margin-bottom: 8px;
   font-weight: 600;
   display: block;
   color: #f86011;
 }
 .team-area .section-title h2 {
-    max-width: 600px;
-    color: #252525;
-    font-size: 35px;
-    font-weight: 800;
-    letter-spacing: -1px;
-    line-height: 42px;
-    text-align: left;
-    margin-top: 10px;
-    margin-right: auto;
-    margin-bottom: 15px;
-    margin-left: auto;
-    text-align: center;
+  max-width: 600px;
+  color: #252525;
+  font-size: 35px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 42px;
+  text-align: left;
+  margin-top: 10px;
+  margin-right: auto;
+  margin-bottom: 15px;
+  margin-left: auto;
+  text-align: center;
 }
 .team-area .section-title .seprator img {
-    width: 70px;
-    margin-top: 5px;
-    margin-bottom: 20px;
+  width: 70px;
+  margin-top: 5px;
+  margin-bottom: 20px;
 }
-
+.card {
+  height: 100%;
+  padding: 20px;
+}
 </style>
