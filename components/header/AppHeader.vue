@@ -7,7 +7,7 @@
         :class="{ onScroll: !topOfPage }"
         class="navbar navbar-expand-lg navbar-light py-0"
       >
-        <b-navbar-brand href="/"
+        <b-navbar-brand :href="localePath('/')"
           ><img
             src="/assets/images/logo.png"
             alt="logo"
@@ -102,7 +102,7 @@
               <router-link :to="localePath('/blogs')" class="nav-link" href="#">
                 <div class="row m-0 justify-content-center">
                   <i class="fa-solid fa-bookmark"></i>
-                  <span> Blog </span>
+                  <span> Blogs </span>
                 </div>
               </router-link>
             </li>

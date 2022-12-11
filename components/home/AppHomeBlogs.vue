@@ -27,8 +27,15 @@
                 <a href="#">{{ blog.title }}</a>
               </h3>
               <p>{{ blog.short_description }}</p>
-              <nuxt-link :to="`/blog/${blog.id}`" class="read-btn"
-                >Read More <i class="fa-solid fa-angle-right"></i>
+              <nuxt-link :to="`/blog/${blog.id}`" class="read-btn">
+                Read More
+                <i
+                  :class="
+                    $i18n.locale === 'en'
+                      ? 'fa-solid fa-angle-right'
+                      : 'fa-solid fa-angle-left'
+                  "
+                ></i>
               </nuxt-link>
             </div>
           </div>

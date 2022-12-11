@@ -38,16 +38,17 @@ export default {
 </script>
 
 <style>
-.team-area .section-title {
+.team .section-title {
   margin-bottom: 0;
+  margin-bottom: 50px;
 }
-.team-area .section-title span {
+.team .section-title span {
   margin-bottom: 8px;
   font-weight: 600;
   display: block;
   color: var(--main-color);
 }
-.team-area .section-title h2 {
+.team .section-title h2 {
   max-width: 600px;
   color: #252525;
   font-size: 35px;
@@ -61,7 +62,7 @@ export default {
   margin-left: auto;
   text-align: center;
 }
-.team-area .section-title .seprator img {
+.team .section-title .seprator img {
   width: 70px;
   margin-top: 5px;
   margin-bottom: 20px;

@@ -104,6 +104,7 @@ export default {
 .team img {
   border-radius: 50%;
   width: 150px;
+  height: 150px;
   margin-bottom: 30px;
   animation: border-transform 15s infinite ease-in-out;
 }
