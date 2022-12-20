@@ -106,6 +106,25 @@
                 </div>
               </router-link>
             </li>
+
+            <li class="nav-item">
+              <router-link :to="localePath('/careers')" class="nav-link">
+                <div class="row m-0 justify-content-center">
+                  <i class="fa-solid fa-user-doctor"></i>
+                  <span> Career </span>
+                </div>
+              </router-link>
+            </li>
+
+            <li class="nav-item">
+              <router-link :to="localePath('/events')" class="nav-link">
+                <div class="row m-0 justify-content-center">
+                  <i class="fa-regular fa-calendar-days"></i>
+                  <span> Events </span>
+                </div>
+              </router-link>
+            </li>
+
             <li class="nav-item">
               <router-link
                 :to="localePath('/contact')"
@@ -126,6 +145,9 @@
             </button>
           </div>
           <lang-switch></lang-switch>
+          <div v-if="$store.state.user" class="logout" @click="logout">
+            <i class="fa-regular fa-right-from-bracket"></i>
+          </div>
         </b-collapse>
       </b-navbar>
     </header>
@@ -155,6 +177,12 @@ export default {
   },
   mounted() {},
   methods: {
+    logout() {
+      this.$store.commit("setUserData", null);
+      this.$cookies.remove("cms-auth");
+      this.$cookies.remove("cms-user");
+      this.$router.push(this.localePath("/login"));
+    },
     handleScroll() {
       if (window.pageYOffset > 200) {
         if (this.topOfPage) this.topOfPage = false;
@@ -186,6 +214,17 @@ header {
   z-index: 10;
   left: 0;
   padding: 0 50px;
+}
+.logout {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--main-color);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 1.2rem;
+  cursor: pointer;
 }
 .navbar-nav .nav-link {
   padding: 10px 0 !important;
