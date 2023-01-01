@@ -19,14 +19,27 @@
           </div>
           <cart />
         </div>
-        <b-navbar-brand :href="localePath('/')"
+
+        <b-navbar-brand :href="localePath('/')" class="brand"
           ><img
             src="/assets/images/logo.png"
             alt="logo"
             class="logo"
             style="width: 200px"
         /></b-navbar-brand>
-        <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+
+        <div class="d-flex align-items-center smallScr">
+          <lang-switch></lang-switch>
+          <div class="m-0 cartIcon" @click="openCart = !openCart">
+            <span>{{ $store.state.cartItems.length }}</span>
+            <i class="fa-regular fa-cart-plus"></i>
+          </div>
+          <div v-if="$store.state.user" class="logout" @click="logout">
+            <i class="fa-regular fa-right-from-bracket"></i>
+          </div>
+          <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+        </div>
+
         <b-collapse id="nav-collapse" is-nav>
           <ul class="navbar-nav me-auto">
             <li class="nav-item">
@@ -37,7 +50,7 @@
                 href="#"
               >
                 <div class="row m-0 justify-content-center">
-                  <i class="fa-solid fa-house"></i>
+                  <!-- <i class="fa-solid fa-house"></i> -->
                   <span> Home </span>
                 </div>
               </router-link>
@@ -60,7 +73,7 @@
                   aria-expanded="false"
                 >
                   <div class="row m-0 justify-content-center">
-                    <i class="fa-solid fa-users"></i>
+                    <!-- <i class="fa-solid fa-users"></i> -->
                     <span> Company </span>
                   </div>
                 </router-link>
@@ -89,7 +102,7 @@
                   aria-expanded="false"
                 >
                   <div class="row m-0 justify-content-center">
-                    <i class="fa-solid fa-paste"></i>
+                    <!-- <i class="fa-solid fa-paste"></i> -->
                     <span> Services </span>
                   </div>
                 </router-link>
@@ -104,7 +117,7 @@
             <li class="nav-item">
               <router-link :to="localePath('/testimonials')" class="nav-link">
                 <div class="row m-0 justify-content-center">
-                  <i class="fa-solid fa-folder-open"></i>
+                  <!-- <i class="fa-solid fa-folder-open"></i> -->
                   <span> Projects </span>
                 </div>
               </router-link>
@@ -113,7 +126,7 @@
             <li class="nav-item">
               <router-link :to="localePath('/blogs')" class="nav-link" href="#">
                 <div class="row m-0 justify-content-center">
-                  <i class="fa-solid fa-bookmark"></i>
+                  <!-- <i class="fa-solid fa-bookmark"></i> -->
                   <span> Blogs </span>
                 </div>
               </router-link>
@@ -122,7 +135,7 @@
             <li class="nav-item">
               <router-link :to="localePath('/careers')" class="nav-link">
                 <div class="row m-0 justify-content-center">
-                  <i class="fa-solid fa-user-doctor"></i>
+                  <!-- <i class="fa-solid fa-user-doctor"></i> -->
                   <span> Career </span>
                 </div>
               </router-link>
@@ -131,7 +144,7 @@
             <li class="nav-item">
               <router-link :to="localePath('/events')" class="nav-link">
                 <div class="row m-0 justify-content-center">
-                  <i class="fa-regular fa-calendar-days"></i>
+                  <!-- <i class="fa-regular fa-calendar-days"></i> -->
                   <span> Events </span>
                 </div>
               </router-link>
@@ -144,18 +157,29 @@
                 href="#"
               >
                 <div class="row m-0 justify-content-center">
-                  <i class="fa-solid fa-envelope"></i>
+                  <!-- <i class="fa-solid fa-envelope"></i> -->
                   <span> Contact </span>
                 </div>
               </router-link>
             </li>
-          </ul>
 
-          <div class="btn-container">
-            <button class="btn nav-btn fw-bold">
-              Start a project <i class="fa-solid fa-circle-arrow-right"></i>
-            </button>
-          </div>
+            <li class="nav-item outLarge">
+              <router-link
+                :to="localePath('/login')"
+                class="nav-link"
+                v-if="$store.state.user"
+                @click="logout"
+              >
+                <div class="row m-0 justify-content-center">
+                  <!-- <i class="fa-solid fa-envelope"></i> -->
+                  <span> Logout </span>
+                </div>
+              </router-link>
+            </li>
+          </ul>
+        </b-collapse>
+
+        <div class="d-flex align-items-center largeScr">
           <lang-switch></lang-switch>
           <div class="m-0 cartIcon" @click="openCart = !openCart">
             <span>{{ $store.state.cartItems.length }}</span>
@@ -164,7 +188,8 @@
           <div v-if="$store.state.user" class="logout" @click="logout">
             <i class="fa-regular fa-right-from-bracket"></i>
           </div>
-        </b-collapse>
+          <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+        </div>
       </b-navbar>
     </header>
   </div>
@@ -218,7 +243,10 @@ export default {
 </script>
 <style lang="scss">
 header {
-  padding: 0px 50px;
+  padding: 20px 50px;
+  @include md {
+    padding: 20px 10px !important;
+  }
   .cart {
     width: 390px;
     height: 100vh;
@@ -278,6 +306,9 @@ header {
     &.opened {
       transform: translateX(0);
     }
+    @include xs {
+      width: 350px;
+    }
   }
   .cartIcon {
     border: 1px solid var(--main-color);
@@ -288,6 +319,7 @@ header {
     place-items: center;
     cursor: pointer;
     position: relative;
+    margin: 0 15px !important;
     span {
       position: absolute;
       top: -15px;
@@ -300,9 +332,17 @@ header {
       display: grid;
       place-content: center;
       font-size: 1.2rem;
+      @include sm {
+        font-size: 1rem;
+      }
     }
     i {
       color: var(--main-color);
+    }
+    @include sm {
+      width: 40px;
+      height: 40px;
+      margin: 0 10px !important;
     }
     &:hover {
       background-color: var(--main-color);
@@ -318,6 +358,33 @@ header {
     padding: 10px 50px;
   }
 }
+.outLarge {
+  display: none;
+  @include md {
+    display: inline;
+  }
+}
+.smallScr {
+  align-items: center;
+  display: none !important;
+  @include md {
+    display: flex !important;
+  }
+}
+.largeScr {
+  align-items: center;
+  display: flex !important;
+  @include md {
+    display: none !important;
+  }
+}
+.brand {
+  img {
+    @include sm {
+      width: 150px !important;
+    }
+  }
+}
 .onScroll {
   position: fixed;
   width: 100%;
@@ -329,7 +396,10 @@ header {
   top: 0;
   z-index: 10;
   left: 0;
-  padding: 0 50px;
+  padding: 20px 50px !important;
+  @include sm {
+    padding: 15px 10px !important;
+  }
 }
 .logout {
   width: 50px;
@@ -341,13 +411,16 @@ header {
   place-items: center;
   font-size: 1.2rem;
   cursor: pointer;
+  @include md {
+    display: none;
+  }
 }
 .navbar-nav .nav-link {
   padding: 10px 0 !important;
   font-weight: bold;
   text-align: center;
   font-size: 19px;
-  height: 100px;
+  /* height: 100px; */
   display: flex;
   align-items: center;
 }

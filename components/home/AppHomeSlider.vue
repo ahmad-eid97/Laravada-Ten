@@ -188,7 +188,7 @@ export default {
   position: absolute !important;
   bottom: 0;
   right: 0;
-  z-index: 999;
+  z-index: 9;
   background: var(--main-color);
   padding: 5px;
   &.arabic {
