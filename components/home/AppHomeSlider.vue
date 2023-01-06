@@ -183,7 +183,7 @@ export default {
   background-size: cover;
 }
 
-.thumb {
+.slider-wrapper .thumb {
   width: 400px;
   position: absolute !important;
   bottom: 0;

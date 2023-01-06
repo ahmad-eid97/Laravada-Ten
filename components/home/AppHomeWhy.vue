@@ -22,11 +22,11 @@
               :key="index"
               class="about-item mb-20"
             >
-              <div class="about-details">
-                <p>{{ feature.description }}</p>
-              </div>
               <div class="about-icon">
                 <i :class="`fa-solid fa-${index + 1}`"></i>
+              </div>
+              <div class="about-details">
+                <p>{{ feature.description }}</p>
               </div>
             </div>
           </div>
@@ -151,9 +151,15 @@ export default {
   border-radius: 50px;
   display: grid;
   place-content: center;
-  width: 30px;
-  height: 30px;
   font-size: 0.8rem;
+  width: 30px !important;
+  height: 30px !important;
+  i {
+    width: 30px !important;
+    height: 30px !important;
+    display: grid;
+    place-content: center;
+  }
 }
 .about-us {
   height: 442px !important;
@@ -231,13 +237,14 @@ export default {
   color: #fff !important;
 }
 .about-us-main-icon {
+  margin-top: 50px;
   @include xs {
     margin: 0;
   }
 }
 .aboutus {
   h3 {
-    display: flex;
+    /* display: flex; */
     justify-content: flex-end;
     margin-bottom: 30px;
   }
@@ -245,7 +252,7 @@ export default {
 .about-item {
   display: flex;
   gap: 10px;
-  justify-content: flex-end;
+  /* justify-content: flex-end; */
 }
 @keyframes circle_pop {
   0%,

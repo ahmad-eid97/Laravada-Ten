@@ -19,7 +19,10 @@
             <div class="content">
               <h4>{{ member.name }}</h4>
               <h5>{{ member.job }}</h5>
-              <h6>{{ member.description }}</h6>
+              <h6>
+                {{ member.description.substring(0, 200) }}
+                {{ member.description.length > 200 ? "..." : "" }}
+              </h6>
               <h5>{{ member.phone }}</h5>
               <h5>{{ member.email }}</h5>
             </div>
@@ -37,7 +40,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 .team-area .section-title {
   margin-bottom: 0;
 }
@@ -60,6 +63,13 @@ export default {
   margin-bottom: 15px;
   margin-left: auto;
   text-align: center;
+}
+.thumb {
+  display: flex;
+  justify-content: center;
+  img {
+    margin-top: 20px;
+  }
 }
 .team-area .section-title .seprator img {
   width: 70px;
@@ -181,6 +191,10 @@ export default {
   margin-bottom: 15px;
   margin-left: auto;
   text-align: center;
+}
+.card {
+  padding: 10px 20px;
+  text-align: center !important;
 }
 .team-area .section-title .seprator img {
   width: 70px;

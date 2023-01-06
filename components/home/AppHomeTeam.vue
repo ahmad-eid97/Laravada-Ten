@@ -18,7 +18,10 @@
                   <div class="content">
                     <h4>{{ member.name }}</h4>
                     <h5>{{ member.job }}</h5>
-                    <h6>{{ member.description }}</h6>
+                    <h6>
+                      {{ member.description.substring(0, 150) }}
+                      {{ member.description.length > 150 ? "..." : "" }}
+                    </h6>
                   </div>
                 </div>
               </div>

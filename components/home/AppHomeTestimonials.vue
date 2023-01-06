@@ -59,6 +59,9 @@ export default {
 };
 </script>
 <style>
+.testimonial-section {
+  padding-bottom: 0 !important;
+}
 .clients-slider-content {
   margin-top: 40px;
   text-align: center;
