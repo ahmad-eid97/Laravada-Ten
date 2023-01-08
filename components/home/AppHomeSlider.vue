@@ -11,9 +11,12 @@
       :dots="false"
       class="main"
     >
-      <div class="item" :style="image1"></div>
-      <div class="item" :style="image2"></div>
-      <div class="item" :style="image3"></div>
+      <div
+        class="item"
+        v-for="slide in slides"
+        :key="slide.id"
+        :style="{ background: `url(${slide.background})` }"
+      ></div>
     </VueSlickCarousel>
     <!-- Indicators -->
     <VueSlickCarousel
@@ -28,15 +31,9 @@
       :class="$i18n.locale === 'ar' ? 'arabic' : ''"
     >
       <img
-        src="https://the7.io/modern-business/wp-content/uploads/sites/53/2018/12/t-img047.jpg"
-        class="img-fluid"
-      />
-      <img
-        src="https://the7.io/modern-business/wp-content/uploads/sites/53/2018/12/t-img054.jpg"
-        class="img-fluid"
-      />
-      <img
-        src="https://the7.io/modern-business/wp-content/uploads/sites/53/2018/12/t-img050.jpg"
+        v-for="slide in slides"
+        :key="slide.id"
+        :src="slide.background"
         class="img-fluid"
       />
     </VueSlickCarousel>
@@ -60,7 +57,7 @@ import "vue-slick-carousel/dist/vue-slick-carousel-theme.css";
 export default {
   name: "AppHomeSlider",
   components: { VueSlickCarousel },
-  props: ["sliderData"],
+  props: ["slides"],
   data() {
     return {
       c1: undefined,
@@ -179,8 +176,8 @@ export default {
 .main .item {
   min-height: 80vh;
   width: 100%;
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
 }
 
 .slider-wrapper .thumb {
