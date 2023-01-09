@@ -41,142 +41,38 @@
         </div>
 
         <b-collapse id="nav-collapse" is-nav>
-          <ul class="navbar-nav me-auto">
-            <li class="nav-item">
-              <router-link
-                :to="localePath('/')"
-                class="nav-link"
-                aria-current="page"
-                href="#"
-              >
-                <div class="row m-0 justify-content-center">
-                  <!-- <i class="fa-solid fa-house"></i> -->
-                  <span> Home </span>
-                </div>
-              </router-link>
-            </li>
+          <b-navbar-nav class="align-items-center">
+            <b-nav-item
+              active-class="active"
+              :to="localePath(`/${item.link}`)"
+              exact
+              v-for="item in $store.state.topMenu"
+              :key="item.id"
+            >
+              <span v-if="!item.child.length">{{ item.label }}</span>
 
-            <li class="nav-item dropdown">
-              <dropdown-menu
-                v-model="show"
-                :hover="true"
-                :closeOnClickOutside="true"
-                :hover_time="10"
+              <b-dropdown
+                :text="item.label"
+                block
+                class="m-2 dropdownBtn"
+                v-if="item.child.length"
               >
-                <router-link
-                  :to="localePath('/team')"
-                  class="nav-link dropdown-toggle"
-                  href="http://example.com"
-                  id="navbarDropdownMenuLink"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
+                <b-dropdown-item
+                  v-for="child in item.child"
+                  :key="child.id"
+                  :to="localePath('/' + child.link)"
+                  >{{ child.label }}</b-dropdown-item
                 >
-                  <div class="row m-0 justify-content-center">
-                    <!-- <i class="fa-solid fa-users"></i> -->
-                    <span> Company </span>
-                  </div>
-                </router-link>
-                <div slot="dropdown">
-                  <a class="dropdown-item" href="#">dropdown link</a>
-                  <a class="dropdown-item" href="#">dropdown link</a>
-                  <a class="dropdown-item" href="#">dropdown link</a>
-                </div>
-              </dropdown-menu>
-            </li>
-
-            <li class="nav-item dropdown">
-              <dropdown-menu
-                v-model="show1"
-                :hover="true"
-                :closeOnClickOutside="true"
-                :hover_time="10"
-              >
-                <router-link
-                  :to="localePath('/services')"
-                  class="nav-link dropdown-toggle"
-                  href="http://example.com"
-                  id="navbarDropdownMenuLink"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  <div class="row m-0 justify-content-center">
-                    <!-- <i class="fa-solid fa-paste"></i> -->
-                    <span> Services </span>
-                  </div>
-                </router-link>
-                <div slot="dropdown">
-                  <a class="dropdown-item" href="#">dropdown link</a>
-                  <a class="dropdown-item" href="#">dropdown link</a>
-                  <a class="dropdown-item" href="#">dropdown link</a>
-                </div>
-              </dropdown-menu>
-            </li>
-
-            <li class="nav-item">
-              <router-link :to="localePath('/testimonials')" class="nav-link">
-                <div class="row m-0 justify-content-center">
-                  <!-- <i class="fa-solid fa-folder-open"></i> -->
-                  <span> Projects </span>
-                </div>
-              </router-link>
-            </li>
-
-            <li class="nav-item">
-              <router-link :to="localePath('/blogs')" class="nav-link" href="#">
-                <div class="row m-0 justify-content-center">
-                  <!-- <i class="fa-solid fa-bookmark"></i> -->
-                  <span> Blogs </span>
-                </div>
-              </router-link>
-            </li>
-
-            <li class="nav-item">
-              <router-link :to="localePath('/careers')" class="nav-link">
-                <div class="row m-0 justify-content-center">
-                  <!-- <i class="fa-solid fa-user-doctor"></i> -->
-                  <span> Career </span>
-                </div>
-              </router-link>
-            </li>
-
-            <li class="nav-item">
-              <router-link :to="localePath('/events')" class="nav-link">
-                <div class="row m-0 justify-content-center">
-                  <!-- <i class="fa-regular fa-calendar-days"></i> -->
-                  <span> Events </span>
-                </div>
-              </router-link>
-            </li>
-
-            <li class="nav-item">
-              <router-link
-                :to="localePath('/contact')"
-                class="nav-link"
-                href="#"
-              >
-                <div class="row m-0 justify-content-center">
-                  <!-- <i class="fa-solid fa-envelope"></i> -->
-                  <span> Contact </span>
-                </div>
-              </router-link>
-            </li>
-
-            <li class="nav-item outLarge">
-              <router-link
-                :to="localePath('/login')"
-                class="nav-link"
-                v-if="$store.state.user"
-                @click="logout"
-              >
-                <div class="row m-0 justify-content-center">
-                  <!-- <i class="fa-solid fa-envelope"></i> -->
-                  <span> Logout </span>
-                </div>
-              </router-link>
-            </li>
-          </ul>
+              </b-dropdown>
+            </b-nav-item>
+            <b-nav-item
+              v-if="$store.state.user"
+              @click="logout"
+              class="outLarge"
+            >
+              Logout
+            </b-nav-item>
+          </b-navbar-nav>
         </b-collapse>
 
         <div class="d-flex align-items-center largeScr">
@@ -444,7 +340,7 @@ header {
   }
 }
 .navbar-nav .nav-link {
-  padding: 10px 0 !important;
+  padding: 10px 20px !important;
   font-weight: bold;
   text-align: center;
   font-size: 19px;
@@ -480,5 +376,28 @@ header {
 }
 img.logo {
   width: 200px;
+}
+.dropdownBtn {
+  margin: 0 !important;
+  button {
+    background: none !important;
+    padding: 0 !important;
+    text-transform: none !important;
+    font-size: 1.2rem !important;
+    font-family: unset !important;
+    font-weight: 700 !important;
+    box-shadow: none !important;
+    border: none !important;
+    min-width: 60px !important;
+    position: relative;
+    top: -3px;
+    color: #000;
+    &:hover {
+      color: var(--main-color) !important;
+    }
+  }
+  .dropdown-menu {
+    top: 40px !important;
+  }
 }
 </style>
