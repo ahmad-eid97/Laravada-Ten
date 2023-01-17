@@ -198,6 +198,7 @@ export default {
   cursor: pointer;
 }
 .thumb img {
+  height: unset !important;
   border: 2px solid transparent;
 }
 .thumb img:hover {

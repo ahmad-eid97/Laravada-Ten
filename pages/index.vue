@@ -19,6 +19,10 @@
     <app-home-technology :solutions="solutions"></app-home-technology>
     <app-home-qoute-2></app-home-qoute-2>
 
+    <app-home-activities :activities="activities" />
+
+    <app-home-steps :steps="steps" />
+
     <app-home-team :team="team"></app-home-team>
 
     <app-home-blogs :blogs="blogs"></app-home-blogs>
@@ -51,6 +55,8 @@ import AppHomeCountdown from "../components/home/AppHomeCountdown.vue";
 import AppHomeTechnology from "../components/home/AppHomeTechnology.vue";
 import AppHomeBlogs from "../components/home/AppHomeBlogs.vue";
 import AppHomeQoute2 from "../components/home/AppHomeQoute2.vue";
+import AppHomeActivities from "../components/home/AppHomeActivities.vue";
+import AppHomeSteps from "../components/home/AppHomeSteps.vue";
 // @ is an alias to /src
 
 export default {
@@ -88,6 +94,18 @@ export default {
       },
     });
 
+    const activities = await $axios.get("/sections/activities", {
+      headers: {
+        "Accept-Language": app.i18n.locale,
+      },
+    });
+
+    const steps = await $axios.get("/sections/steps", {
+      headers: {
+        "Accept-Language": app.i18n.locale,
+      },
+    });
+
     return {
       slides: slides.data.data.sliders,
       features: features.data.data,
@@ -97,6 +115,8 @@ export default {
       testimonials: testimonials.data.data.testimonials,
       team: team.data.data.teams,
       counter: counter.data.data,
+      activities: activities.data.data,
+      steps: steps.data.data,
     };
   },
   components: {
@@ -112,6 +132,8 @@ export default {
     AppHomeTechnology,
     AppHomeBlogs,
     AppHomeQoute2,
+    AppHomeActivities,
+    AppHomeSteps,
     // AppHomeNews,
     // AppHomeServicesOffers
   },

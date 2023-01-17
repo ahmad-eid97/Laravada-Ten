@@ -374,6 +374,11 @@ header {
   background-color: rgba(147, 194, 72, 0.15);
   color: var(--main-color) !important;
 }
+.nav-item {
+  & > .dropdown {
+    display: none;
+  }
+}
 img.logo {
   width: 200px;
 }
