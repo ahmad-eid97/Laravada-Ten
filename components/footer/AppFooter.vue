@@ -1,5 +1,6 @@
 <template>
   <section class="footer">
+    <subscribe />
     <div class="d-flex justify-content-around pt-5 responsive-footer">
       <div class="w-30 mt-2 w-control">
         <img
@@ -117,9 +118,11 @@
 </template>
 
 <script>
+import subscribe from "../../components/subscribe/subscribe.vue";
+
 export default {
   name: "AppFooter",
-  components: {},
+  components: { subscribe },
   data() {
     return {};
   },

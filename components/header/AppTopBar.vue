@@ -20,7 +20,10 @@
         </p>
       </div>
       <div class="d-flex">
-        <form class="searchform mini-widget-searchform" :class="$i18n.locale === 'ar' ? 'arabic' : ''">
+        <form
+          class="searchform mini-widget-searchform"
+          :class="$i18n.locale === 'ar' ? 'arabic' : ''"
+        >
           <input
             type="text"
             class="field searchform-s"
@@ -122,7 +125,7 @@ export default {
   box-sizing: border-box;
 }
 .subnav-conatiner .searchform input[type="text"]::placeholder {
-  color: #fff !important;
+  /* color: #fff !important; */
   opacity: 1;
 }
 .subnav-conatiner .searchform input[type="text"]:hover,
