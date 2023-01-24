@@ -29,6 +29,15 @@
 
     <app-home-blogs :blogs="blogs"></app-home-blogs>
 
+    <SocialChat :attendants="attendants">
+      <p slot="header">Click one of our representatives below to chat.</p>
+      <template v-slot:button="{ open }">
+        <span v-show="!open">Contact us</span>
+        <span v-show="open">Close</span>
+      </template>
+      <small slot="footer">Opening hours: 8am to 10pm</small>
+    </SocialChat>
+
     <!-- <app-home-contact-divider></app-home-contact-divider> -->
 
     <!-- SERVICES WE PROVIDESection Start -->
@@ -64,6 +73,62 @@ import AppHomePartners from "../components/home/AppHomePartners.vue";
 
 export default {
   name: "Home",
+  data() {
+    return {
+      attendants: [
+        {
+          app: "whatsapp",
+          label: "Support",
+
+          name: this.$store.state.websiteSettings.find(
+            (one) => one.key === "chat_widget_whatsapp_label"
+          )
+            ? this.$store.state.websiteSettings.find(
+                (one) => one.key === "chat_widget_whatsapp_label"
+              ).plain_value
+            : "Laravada",
+
+          number: this.$store.state.websiteSettings.find(
+            (one) => one.key === "chat_widget_whatsapp_number"
+          )
+            ? this.$store.state.websiteSettings.find(
+                (one) => one.key === "chat_widget_whatsapp_number"
+              ).plain_value
+            : "11111111111",
+
+          avatar: {
+            src: "https://avatars0.githubusercontent.com/u/8084606?s=460&u=20b6499a416cf7129a18e5c168cf387e159edb1a&v=4",
+            alt: "Laravada customer support",
+          },
+        },
+        {
+          app: "messenger",
+          label: "Technical support",
+
+          name: this.$store.state.websiteSettings.find(
+            (one) => one.key === "chat_widget_messenger_label"
+          )
+            ? this.$store.state.websiteSettings.find(
+                (one) => one.key === "chat_widget_messenger_label"
+              ).plain_value
+            : "Laravada Facebook",
+
+          id: this.$store.state.websiteSettings.find(
+            (one) => one.key === "chat_widget_messenger_id"
+          )
+            ? this.$store.state.websiteSettings.find(
+                (one) => one.key === "chat_widget_messenger_id"
+              ).plain_value
+            : "111111111111",
+
+          avatar: {
+            src: "https://avatars0.githubusercontent.com/u/8084606?s=460&u=20b6499a416cf7129a18e5c168cf387e159edb1a&v=4",
+            alt: "Laravada customer support",
+          },
+        },
+      ],
+    };
+  },
   async asyncData({ $axios, app }) {
     const slides = await $axios.get("/sliders", {
       headers: {
@@ -146,3 +211,17 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+.home {
+  --vsc-bg-header: var(--main-color);
+  --vsc-bg-footer: var(--main-color);
+  --vsc-text-color-header: #fff;
+  --vsc-text-color-footer: #fff;
+  --vsc-bg-button: var(--main-color);
+  --vsc-text-color-button: #fff;
+  --vsc-outline-color: var(--main-color);
+  --vsc-border-color-bottom-header: #fff;
+  --vsc-border-color-top-footer: #fff;
+}
+</style>
