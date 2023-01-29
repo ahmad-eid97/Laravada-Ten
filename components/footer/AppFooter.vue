@@ -19,7 +19,7 @@
             ).plain_value
           }}
         </p>
-        <button class="btn test-btn mt-3" @click="$router.push('/about')">
+        <button class="btn test-btn mt-3" @click="$router.push('/contact')">
           Get in touch!
         </button>
       </div>
