@@ -9,14 +9,22 @@
             <i class="fa-solid fa-phone"></i>
           </span>
 
-          011 322 44 56
+          {{
+            $store.state.websiteSettings.find(
+              (one) => one.key === "contact_phone"
+            ).plain_value
+          }}
         </p>
         <p>
           <span class="mx-1">
             <i class="fa-solid fa-location-dot"></i>
           </span>
 
-          Highland St. Tonawanda, NY 14150
+          {{
+            $store.state.websiteSettings.find(
+              (one) => one.key === "contact_address"
+            ).plain_value
+          }}
         </p>
       </div>
       <div class="d-flex">
@@ -125,7 +133,7 @@ export default {
   box-sizing: border-box;
 }
 .subnav-conatiner .searchform input[type="text"]::placeholder {
-  /* color: #fff !important; */
+  color: #fff !important;
   opacity: 1;
 }
 .subnav-conatiner .searchform input[type="text"]:hover,
