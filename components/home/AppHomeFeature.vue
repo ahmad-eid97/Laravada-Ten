@@ -87,14 +87,14 @@ export default {
   border-radius: 10px;
   opacity: 1;
 }
-.services-card i {
+.features .services-card i {
   color: var(--main-color);
   font-size: 60px;
   line-height: 1;
   -webkit-transition: 0.7s;
   transition: 0.7s;
 }
-.services-card:hover i {
+.features .services-card:hover i {
   color: #fff;
 }
 .services-card h3 {
